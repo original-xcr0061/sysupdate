@@ -2,8 +2,8 @@
 CLI System update for Pop-OS - Script
 
 Including:
-APT update.
-Flatpak update
-System Recovery partition update.
+/nAPT update.
+/nFlatpak update
+/nSystem Recovery partition update.
 
 to be continued.........
