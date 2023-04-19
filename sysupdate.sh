@@ -22,42 +22,49 @@ echo "              System Update             "
 echo ""
 tput sgr0
 
+
 # Heading - Sudo Password
-	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Enter Password... $(tput sgr0)"
+echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Enter Password... $(tput sgr0)"
 	echo
-	# APT system update
+        # APT system update
 		sudo apt update
 		echo
 		apt list --upgradable
 		echo
 		sudo apt dist-upgrade
 		echo
+        sleep 2
+        echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Auto Uninstall $(tput rmul) $(tput sgr0)"
 		sudo apt autoremove
 		echo
 
-	echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+
 
 # Heading - Flatpak
-	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nFlatpak Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
+echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nFlatpak Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
 	sleep 2
-	echo
-	# Flatpak system update
+	    echo
+	    # Flatpak system update
 		flatpak list --app --columns=name,application,runtime
 		echo
+        sleep 2
 		flatpak update
-		echo
+	    echo
+        echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nFlatpak Uninstall Unused Apps & Runtime $(tput rmul) $(tput sgr0)"
 		sleep 2
 		flatpak uninstall --unused
 		echo
 
-	echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+
 
 # Heading - Pop-OS Recovery update
-	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nPop-OS Recovery Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
+echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nPop-OS Recovery Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
 	sleep 2
 	echo
-	# Pop-OS Recovery update
+        # Pop-OS Recovery update
 		pop-upgrade recovery upgrade from-release
 
-	echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-	echo
+echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+echo
