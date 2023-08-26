@@ -56,11 +56,11 @@ apt_update() {
     echo
     apt list --upgradable
     echo
-    sleep 2
+    sleep 1
     sudo apt dist-upgrade
     echo
     echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Auto Uninstall $(tput rmul) $(tput sgr0)"
-    sleep 2
+    sleep 1
     sudo apt autoremove
     echo
 }
@@ -95,18 +95,11 @@ popos_recovery_update() {
 # Execute based on the chosen option
 case $option in
     1)
-        echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-        echo
         apt_update
-        echo
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-        echo
         flatpak_update
-        echo
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-        echo
         popos_recovery_update
-        echo
         ;;
     2)
         apt_update
