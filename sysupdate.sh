@@ -92,7 +92,7 @@ popos_recovery_update() {
     echo
 }
 
-# Snap Package update.
+# Snap Package update function.
 snap_update() {
 	echo
     	sleep 1
@@ -105,7 +105,7 @@ snap_update() {
 	echo
 }
 
-# HomeBrew Package update.
+# HomeBrew Package update funciion.
 brew_update() {
 	echo
     	sleep 1
