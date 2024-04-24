@@ -42,11 +42,12 @@ echo
 echo -e "1. Update everything (Excluding recovery)"
 echo -e "2. Update APT only"
 echo -e "3. Update Flatpak & Snaps only"
-echo -e "4. Update recovery"
+echo -e "4. Update HomeBrew"
+echo -e "5. Update recovery"
 echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
 
 # Read the user choice
-read option
+read -p "--> " option
 
 ##############################################
 # APT update function
@@ -104,6 +105,20 @@ snap_update() {
 	echo
 }
 
+# HomeBrew Package update.
+brew_update() {
+	echo
+    	sleep 1
+    	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nHomeBrew Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
+	echo
+	brew leaves -r
+	echo
+	sleep 1
+    brew update
+	brew upgrade
+	echo
+}
+
 ##############################################
 # Execute based on the chosen option
 case $option in
@@ -113,6 +128,8 @@ case $option in
         flatpak_update
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
         snap_update
+        echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+        brew_update
         ;;
     2)
         apt_update
@@ -120,8 +137,12 @@ case $option in
     3)
         flatpak_update
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-        snap_update       ;;
+        snap_update
+        ;;
     4)
+        brew_update
+        ;;
+    5)
         popos_recovery_update
         ;;
     *)
