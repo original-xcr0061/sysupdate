@@ -39,10 +39,10 @@ set -o nounset
 echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
 echo -e "Please choose an option:"
 echo
-echo -e "1. Update everything"
+echo -e "1. Update everything (Excluding recovery)"
 echo -e "2. Update APT only"
-echo -e "3. Update Flatpak only"
-echo -e "4. Update recovery only"
+echo -e "3. Update Flatpak & Snaps only"
+echo -e "4. Update recovery"
 echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
 
 # Read the user choice
@@ -58,10 +58,10 @@ apt_update() {
     echo
     sleep 1
     sudo apt dist-upgrade
-    echo
-    echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Auto Uninstall $(tput rmul) $(tput sgr0)"
-    sleep 1
-    sudo apt autoremove
+#    echo
+#    echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nAPT Auto Uninstall $(tput rmul) $(tput sgr0)"
+#    sleep 1
+#    sudo apt autoremove
     echo
 }
 
@@ -91,6 +91,19 @@ popos_recovery_update() {
     echo
 }
 
+# Snap Package update.
+snap_update() {
+	echo
+    	sleep 1
+    	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nSnap Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
+	echo
+	snap list
+	echo
+	sleep 1
+	sudo snap refresh
+	echo
+}
+
 ##############################################
 # Execute based on the chosen option
 case $option in
@@ -99,14 +112,15 @@ case $option in
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
         flatpak_update
         echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
-        popos_recovery_update
+        snap_update
         ;;
     2)
         apt_update
         ;;
     3)
         flatpak_update
-        ;;
+        echo -e "$(tput setaf 6)\n================================================== $(tput sgr0)"
+        snap_update       ;;
     4)
         popos_recovery_update
         ;;
