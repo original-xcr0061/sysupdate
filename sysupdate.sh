@@ -111,7 +111,7 @@ brew_update() {
     	sleep 1
     	echo -e "$(tput setaf 6) $(tput bold) $(tput smul)\nHomeBrew Update$(tput rmul) $(tput setaf 5) $(tput bold)\nPlease Wait... $(tput sgr0)"
 	echo
-	brew leaves -r
+#	brew leaves -r
 	echo
 	sleep 1
     brew update
